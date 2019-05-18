@@ -1,0 +1,91 @@
+version: '3'
+
+networks:
+  freddyamsterdam-d8d-network:
+    driver: bridge
+
+services:
+  apache:
+    build:
+      context: ./
+      dockerfile: ./apache/Dockerfile
+    container_name: "${PROJECT_NAME}-apache"
+    depends_on:
+      - drupal
+      - mariadb
+      - php-fpm
+    environment:
+      - APACHE_RUN_USER=${APACHE_RUN_USER}
+      - APACHE_RUN_GROUP=${APACHE_RUN_GROUP}
+      - APACHE_LOG_DIR=/var/log/apache2
+      - SERVER_ADMIN=${SERVER_ADMIN}
+      - SERVER_DOMAIN=${SERVER_DOMAIN}
+    image: "${PROJECT_REGISTRY}/${PROJECT_NAME}-apache"
+    networks:
+      - freddyamsterdam-d8d-network
+    ports:
+      - "8080:80"
+    restart: always
+    tty: true
+    volumes:
+      - src:/opt/src
+
+  drupal:
+    build:
+      context: ./
+      dockerfile: ./drupal/Dockerfile
+    container_name: "${PROJECT_NAME}-drupal"
+    environment:
+      - APACHE_RUN_USER=${APACHE_RUN_USER}
+      - APACHE_RUN_GROUP=${APACHE_RUN_GROUP}
+      - SERVER_DOMAIN=${SERVER_DOMAIN}
+    image: "${PROJECT_REGISTRY}/${PROJECT_NAME}-drupal"
+    restart: "no"
+    volumes:
+      - src:/opt/src
+
+  mariadb:
+    container_name: "${PROJECT_NAME}-mariadb"
+    depends_on:
+      - drupal
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    image: mariadb:latest
+    networks:
+      - freddyamsterdam-d8d-network
+    ports:
+      - "3306:3306"
+    restart: always
+    tty: true
+    volumes:
+      - db:/var/lib/mysql
+
+  php-fpm:
+    build:
+      context: ./
+      dockerfile: ./php-fpm/Dockerfile
+    container_name: "${PROJECT_NAME}-phpfpm"
+    depends_on:
+      - drupal
+      - mariadb
+    environment:
+      - DEBUG=${DEBUG}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USERNAME=${MYSQL_USERNAME}
+    image: "${PROJECT_REGISTRY}/${PROJECT_NAME}-phpfpm"
+    networks:
+      - freddyamsterdam-d8d-network
+    ports:
+      - "9000:9000"
+    restart: always
+    tty: true
+    volumes:
+      - src:/opt/src
+
+volumes:
+  src:
+  db:

@@ -1,0 +1,6 @@
+.DS_Store
+src/node_modules
+src/vendor
+src/web/sites/default/files
+src/web/sites/default/settings.php
+src/web/sites/default/services.yml

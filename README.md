@@ -60,6 +60,8 @@ $ docker-compose up -d
 ### 6. Install Drupal
 Open your browser, navigate to http://127.0.0.1:8080 and install Drupal.
 
+:bulb: Alternatively, you could import an existing database by connecting to MariaDB with your favourite MySQL client.
+
 ### 7. Down
 You can use -v to remove volumes when you're done, but take heed: this will delete your database, too.
 

@@ -25,7 +25,7 @@ $ (openssl rand -base64 64 | tr -d '\n') > .salt
 
 By default the `.salt` file is ignored by `.gitignore` in the project root directory. You can disable this if you'd like the file to be tracked.
 
-The `.salt` file is read into the `$settings['hash_salt']` variable in [settings.php](/drupal/settings.php:L104).
+The `.salt` file is read into the `$settings['hash_salt']` variable in [settings.php](/drupal/settings.php#L104).
 
 ### 3. Environment variables
 The `.env` file contains a variety of environment variables ranging from database configuration to site domain configuration. Variables speak for themselves.

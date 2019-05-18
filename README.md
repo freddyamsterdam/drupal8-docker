@@ -4,7 +4,7 @@ A helping hand to get Drupal 8 containerised using Docker.
 ## Prerequisites
 - [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your system;
 - [Composer Dependency Manager for PHP](https://getcomposer.org) is installed on your machine;
-- Basic knowledge of aformentioned tools.
+- Basic knowledge of aforementioned tools.
 
 ## Steps
 Follow steps in order. Run all commands, except `docker-compose` commands, from project root.

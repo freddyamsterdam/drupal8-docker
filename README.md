@@ -7,7 +7,13 @@ A helping hand to get Drupal 8 containerised using Docker.
 - Basic knowledge of aforementioned tools.
 
 ## Steps :feet:
-Follow steps in order. Run all commands, except `docker-compose` commands, from project root.
+To get started, follow the steps in order. If you don't...
+
+![errors everywhere](https://www.craghoppers.com/community/wp-content/uploads/2016/02/errors-everywhere-meme.png)
+
+All commands must be executed from the project root. The exception to this, being `docker-compose` commands – these can be run from anywhere in the project directory.
+
+Let's crack on shall we? :rocket:
 
 ### 1. Get Drupal
 See [Drupal Project](https://github.com/drupal-composer/drupal-project) for more information, documentation, etc.
@@ -20,7 +26,7 @@ Running the above command will put a Drupal installation into a directory named 
 Keep in mind that if you want to use a different Drupal installation, you may need to make substantial adjustments to both the [Apache Dockerfile](/apache/Dockerfile) and the [Drupal Dockerfile](/drupal/Dockerfile), and potentially other files, too.
 
 ### 2. Hash salt
-First up, let's generate a hash salt and save it to a file (`.salt`).
+Next up, let's generate a hash salt and save it to a file (`.salt`).
 
 ```bash
 $ (openssl rand -base64 64 | tr -d '\n') > .salt
@@ -31,15 +37,17 @@ By default the `.salt` file is ignored by `.gitignore` in the project root direc
 The `.salt` file is read into the `$settings['hash_salt']` variable in [settings.php](/drupal/settings.php#L104).
 
 ### 3. Environment variables
-The `.env` file contains a variety of environment variables ranging from database configuration to site domain configuration. Variables speak for themselves.
+The `.env` file contains a variety of environment variables ranging from database configuration to site domain configuration.
 
 ```bash
 $ cp .env.example .env
 ```
 
-Proceed to edit `.env` in your favourite editor.
+Proceed to edit `.env` in your favourite editor. All of the variables are fairly self explanatory.
 
 ### 4. Build
+Let's build all of the services.
+
 ```bash
 $ docker-compose build
 ```
@@ -63,8 +71,12 @@ $ docker-compose down
 Sometimes stuff just doesn't work out, so here are some useful commands to help you out.
 
 ### Container Logs
+Logs from all containers
 ```bash
 $ docker-compose logs
+```
+Logs from specific containers
+```bash
 $ docker-compose logs apache
 $ docker-compose logs mariadb
 $ docker-compose logs php-fpm

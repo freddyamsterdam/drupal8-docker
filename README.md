@@ -1,12 +1,12 @@
-# Drupal 8 and Docker Compose
+# Drupal 8 and Docker Compose :fire::fire::fire::fire:
 A helping hand to get Drupal 8 containerised using Docker.
 
-## Prerequisites
+## Prerequisites :v:
 - [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your system;
 - [Composer Dependency Manager for PHP](https://getcomposer.org) is installed on your machine;
 - Basic knowledge of aforementioned tools.
 
-## Steps
+## Steps :feet:
 Follow steps in order. Run all commands, except `docker-compose` commands, from project root.
 
 ### 1. Get Drupal
@@ -59,7 +59,7 @@ You can use -v to remove volumes when you're done, but take heed: this will dele
 $ docker-compose down
 ```
 
-## Troubleshooting
+## Troubleshooting :japanese_ogre::gun:
 Sometimes stuff just doesn't work out, so here are some useful commands to help you out.
 
 ### Container Logs

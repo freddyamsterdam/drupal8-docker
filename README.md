@@ -15,6 +15,9 @@ See [Drupal Project](https://github.com/drupal-composer/drupal-project) for more
 ```bash
 $ composer create-project drupal-composer/drupal-project:8.x-dev src --no-interaction
 ```
+Running the above command will put a Drupal installation into a directory named `src` in the project root. This entire project hinges on that fact.
+
+Keep in mind that if you want to use a different Drupal installation, you may need to make substantial adjustments to both the [Apache Dockerfile](/apache/Dockerfile) and the [Drupal Dockerfile](/drupal/Dockerfile), and potentially other files, too.
 
 ### 2. Hash salt
 First up, let's generate a hash salt and save it to a file (`.salt`).

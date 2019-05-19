@@ -6,7 +6,23 @@ A helping hand to get Drupal 8 containerised using Docker.
 - [Composer Dependency Manager for PHP](https://getcomposer.org) is installed on your machine;
 - Basic knowledge of aforementioned tools.
 
-## Steps :feet:
+## <a name="run"></a> Run :shoe:
+If you haven't installed Drupal yet follow [the steps](#steps) below. Otherwise, you can run:
+
+```shell
+# To start in Foreground
+$ docker-compose up
+# To start in background
+$ docker-compose up -d
+# To stop
+$ docker-compose down
+# To stop and remove volumes (-v) and images (-rmi)
+$ docker-compose down -v -rmi
+```
+
+## <a name="steps"></a> Steps :feet:
+If you have already completed these steps, check [the run section](#run) to start and stop your containers.
+
 To get started, follow the steps in order. If you don't...
 
 ![errors everywhere](https://www.craghoppers.com/community/wp-content/uploads/2016/02/errors-everywhere-meme.png)
@@ -58,7 +74,7 @@ $ docker-compose up -d
 ```
 
 ### 6. Install Drupal
-Open your browser, navigate to http://127.0.0.1:8080 and install Drupal.
+Open your browser, navigate to http://127.0.0.1:8080 and complete the  Drupal installation.
 
 :bulb: Alternatively, you could import an existing database by connecting to MariaDB with your favourite MySQL client.
 

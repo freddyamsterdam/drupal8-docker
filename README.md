@@ -7,7 +7,7 @@ A helping hand to get Drupal 8 containerised using Docker.
 - Basic knowledge of aforementioned tools.
 
 ## <a name="run"></a> Run :shoe:
-If you haven't installed Drupal yet follow [the steps](#steps) below. Otherwise, you can run:
+If you haven't installed Drupal yet, follow [the steps](#steps) below. Otherwise, you can run:
 
 ```shell
 # To start in Foreground
